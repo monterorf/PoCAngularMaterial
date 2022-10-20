@@ -1,0 +1,44 @@
+{
+  "employeesList": [
+    {
+      "firstName": "Rich",
+      "lastName": "Montero",
+      "dateOfBirth": "2022-10-01T05:00:00.000Z",
+      "gender": "Male",
+      "address": "Privada Gladiola 7",
+      "zipCode": 22564,
+      "university": "UABC",
+      "id": 1
+    },
+    {
+      "firstName": "Mariela",
+      "lastName": "Castillo",
+      "dateOfBirth": "2022-10-19T05:00:00.000Z",
+      "gender": "Male",
+      "address": "Privada Gladiola 7",
+      "zipCode": 22564,
+      "university": "UABC",
+      "id": 2
+    },
+    {
+      "firstName": "Christian",
+      "lastName": "Montero",
+      "dateOfBirth": "2022-10-01T05:00:00.000Z",
+      "gender": "Male",
+      "address": "Alicia Maria 505",
+      "zipCode": 22105,
+      "university": "UABC",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

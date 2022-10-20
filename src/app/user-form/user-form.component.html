@@ -1,0 +1,83 @@
+<p mat-dialog-title>Employee Information</p>
+<div class="mat-dialog-content">
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="employeeForm">
+
+      <form [formGroup]="employeeForm">
+        <ng-template matStepLabel>Employee Information</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName" matInput placeholder="First Name">        
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName" matInput placeholder="Last Name">        
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender" placeholder="Gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>   
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+      
+
+
+
+    </mat-step>
+    <mat-step [stepControl]="employeeForm" label="Personal Info">
+      <form [formGroup]="employeeForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" placeholder="Address"
+                 required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Zip Code</mat-label>
+          <input matInput formControlName="zipCode" type="number" placeholder="Zip Code"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="employeeForm" label="Education">
+      <form [formGroup]="employeeForm">
+        <mat-form-field appearance="outline">
+          <mat-label>University</mat-label>
+          <input matInput formControlName="university" placeholder="University"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="addEmployeeInfo()">{{actionBtn}}</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
+
