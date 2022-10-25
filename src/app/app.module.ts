@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NstInfoFormComponent } from './nst-info-form/nst-info-form.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -57,6 +59,8 @@ import { PhotoProfileComponent } from './photo-profile/photo-profile.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTabsModule,
+    MatChipsModule,
     MatSnackBarModule,
     MatSlideToggleModule
   ],

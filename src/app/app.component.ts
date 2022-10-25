@@ -7,6 +7,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import { NstInfoFormComponent } from './nst-info-form/nst-info-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+interface Option {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,9 +22,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class AppComponent implements OnInit {
   title = 'PoCMatDialogForm';
-  displayedColumns: string[] = ['email','firstName','lastName', 'employeeSince', 'position','area','location','manager','action'];
+  displayedColumns: string[] = ['Photo','firstName','university','action'];
   dataSource!: MatTableDataSource<any>;
-
+  options: Option[] = [
+    {value: 'allitems-0', viewValue: 'All Items'},
+    {value: 'item-1', viewValue: 'item 1'},
+    {value: 'item-2', viewValue: 'item 2'},
+  ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -90,5 +99,4 @@ export class AppComponent implements OnInit {
       }
     })
   }
-
 }
