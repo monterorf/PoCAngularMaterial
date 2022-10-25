@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeService } from './services/employee.service';
-import { UserFormComponent } from './user-form/user-form.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { NstInfoFormComponent } from './nst-info-form/nst-info-form.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,13 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export class AppComponent implements OnInit {
   title = 'PoCMatDialogForm';
-  displayedColumns: string[] = ['firstName','lastName', 'dateOfBirth', 'gender','address','zipCode','university','action'];
+  displayedColumns: string[] = ['email','firstName','lastName', 'employeeSince', 'position','area','location','manager','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public dialog: MatDialog, private employeeService: EmployeeService) {
+  constructor(public dialog: MatDialog, private employeeService: EmployeeService, private snackBar: MatSnackBar) {
 
   }
   // ngAfterViewInit(): void {
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
   
 
   openDialog() {
-    const dialogRef = this.dialog.open(UserFormComponent,{width:'80%'})
+    const dialogRef = this.dialog.open(NstInfoFormComponent,{width:'60%'})
     .afterClosed().subscribe(val=>{
       if(val==='save') {
         this.getEmployees();
@@ -69,7 +70,7 @@ export class AppComponent implements OnInit {
   }
 
   editEmployee(row: any){
-    this.dialog.open(UserFormComponent,{
+    this.dialog.open(NstInfoFormComponent,{
         width:'80%',
         data: row}).afterClosed().subscribe(val=>{
           if(val==='update'){
@@ -81,11 +82,11 @@ export class AppComponent implements OnInit {
   deleteEmployee(id:number){
     this.employeeService.deleteEmployee(id).subscribe({
       next:(res)=>{
-        alert("Employee was removed successfully");
+        this.snackBar.open('Employee has been removed successfully','Dismiss');
         this.getEmployees();
       },
       error:()=>{
-        alert("Error while removing employee");
+        this.snackBar.open('Error while removing Employee','Dismiss');
       }
     })
   }

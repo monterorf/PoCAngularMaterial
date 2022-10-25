@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from '../_models/Employee';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-form',
@@ -11,26 +12,25 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 })
 export class UserFormComponent implements OnInit {
   employeeForm !: FormGroup;
-  personalInfoForm !: FormGroup;
-  educationForm !: FormGroup;
   employee !: Employee;
   actionBtn : string = "Save";
 
   
   
-  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, 
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, private snackbar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public editData : any, private dialogRef: MatDialogRef<UserFormComponent>) { }
   
+
 
   ngOnInit(): void {
     this.initForms();
     if(this.editData){
       this.employeeForm.controls['firstName'].setValue(this.editData.firstName);
       this.employeeForm.controls['lastName'].setValue(this.editData.lastName);
-      this.employeeForm.controls['dateOfBirth'].setValue(this.editData.dateOfBirth);
-      this.employeeForm.controls['address'].setValue(this.editData.address);   
-      this.employeeForm.controls['gender'].setValue(this.editData.gender);     
-      this.employeeForm.controls['zipCode'].setValue(this.editData.zipCode);  
+      this.employeeForm.controls['employeSince'].setValue(this.editData.employeeSince);
+      this.employeeForm.controls['area'].setValue(this.editData.area);   
+      this.employeeForm.controls['location'].setValue(this.editData.location);     
+      this.employeeForm.controls['manager'].setValue(this.editData.manager);  
       this.employeeForm.controls['university'].setValue(this.editData.university);  
 
       this.actionBtn = "Update"
@@ -57,13 +57,13 @@ export class UserFormComponent implements OnInit {
           this.employee = this.employeeForm.value;
           this.employeeService.postEmployee(this.employee).subscribe({
           next:(res)=>{
-            alert("Employee has been added successfully");
+            this.snackbar.open('Employee has been saved successfully');
             this.employeeForm.reset();
             this.dialogRef.close('save');
 
           },
           error:()=>{
-            alert("Error while adding employee");
+            this.snackbar.open('Error while adding Employee');
           }
         })
     }else{
@@ -74,7 +74,7 @@ export class UserFormComponent implements OnInit {
   updateEmployee(){
     this.employeeService.updateEmployee(this.employeeForm.value,this.editData.id).subscribe({
       next:(res)=>{
-        alert("Employee has been updated successfullly");
+        this.snackbar.open('Employee has been updated successfully','dismiss');
         this.employeeForm.reset();
         this.dialogRef.close('update');
       

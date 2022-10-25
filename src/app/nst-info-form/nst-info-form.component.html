@@ -1,0 +1,120 @@
+<p mat-dialog-title>Employee Information</p>
+<div class="mat-dialog-content">
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="nstInfoForm">
+        <div class="nstInfo">
+            <div class="display cont">
+              <app-photo-profile></app-photo-profile>
+            </div>
+            <div class="nstInfoForm cont">
+                <form [formGroup]="nstInfoForm">
+                    <ng-template matStepLabel>Employee Information</ng-template>                    
+                      <mat-form-field appearance="outline" style="margin-right: 20px;">
+                        <mat-label>First Name</mat-label>
+                        <input formControlName="firstName" matInput placeholder="First Name">        
+                      </mat-form-field>                                        
+                      <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input formControlName="lastName" matInput placeholder="Last Name">        
+                      </mat-form-field>
+                    <br>                    
+                      <mat-form-field appearance="outline" class="dateInput">
+                        <mat-label>Employee Since</mat-label>
+                        <input formControlName="employeeSince" matInput [matDatepicker]="picker" >
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>                    
+                      <mat-form-field appearance="outline">
+                          <mat-label>Area</mat-label>
+                          <input formControlName="area" matInput placeholder="Area">        
+                      </mat-form-field>
+                    <br>
+                      <mat-form-field appearance="outline" style="margin-right: 20px;">
+                        <mat-label>Location</mat-label>
+                        <mat-select formControlName="location" placeholder="Location">
+                          <mat-option value="Puebla">Puebla</mat-option>
+                          <mat-option value="Merida">Mérida</mat-option>
+                          <mat-option value="Remote">Remote</mat-option>
+                        </mat-select>   
+                      </mat-form-field>    
+                      
+                      <mat-form-field appearance="outline">
+                        <mat-label>Position</mat-label>
+                        <input formControlName="position" matInput placeholder="Position">        
+                    </mat-form-field>
+
+                    <br>
+
+                      <mat-form-field appearance="outline">
+                          <mat-label>Manager</mat-label>
+                          <mat-select formControlName="manager" placeholder="Manager" >
+                            <mat-option *ngFor="let manager of managers" value={{manager}} >{{manager}}</mat-option>                            
+                        </mat-select>   
+                      </mat-form-field>   
+                      <br>                             
+
+                  </form>
+            </div>
+            <div class="toggle cont">
+                <mat-slide-toggle>Enable</mat-slide-toggle>
+                <br>
+                <mat-slide-toggle>Billable</mat-slide-toggle>
+                <br>
+                <mat-slide-toggle>Reports</mat-slide-toggle>
+                <br>
+                <mat-slide-toggle>Bench</mat-slide-toggle>
+            </div>
+        </div>
+        <div class="footerButtons">                        
+          <button mat-stroked-button color="warn" matStepperPrevious disabled="true"><mat-icon>keyboard_arrow_left</mat-icon> Back</button>
+          <div>
+            <button mat-stroked-button color="warn" style="margin-right: 20px;">Cancel</button>
+            <button mat-flat-button color="warn" (click)="addNstInfo()">{{actionBtn}}</button>
+          </div>
+          <button mat-stroked-button color="warn" matStepperNext>Next <mat-icon>keyboard_arrow_right</mat-icon></button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="nstInfoForm" label="Personal Info">
+      <form [formGroup]="nstInfoForm">
+        <mat-form-field appearance="outline" style="margin-right: 20px;">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" placeholder="Address"
+                 required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Zip Code</mat-label>
+          <input matInput formControlName="zipCode" type="number" placeholder="Zip Code"
+                 required>
+        </mat-form-field>
+        <div class="footerButtons">                        
+          <button mat-stroked-button color="warn" matStepperPrevious><mat-icon>keyboard_arrow_left</mat-icon> Back</button>
+          <div>
+            <button mat-stroked-button color="warn" style="margin-right: 20px;">Cancel</button>
+            <button mat-flat-button color="warn" (click)="addNstInfo()">{{actionBtn}}</button>
+          </div>
+          <button mat-stroked-button color="warn" matStepperNext>Next <mat-icon>keyboard_arrow_right</mat-icon></button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="nstInfoForm" label="Education">
+      <form [formGroup]="nstInfoForm">
+        <mat-form-field appearance="outline">
+          <mat-label>University</mat-label>
+          <input matInput formControlName="university" placeholder="University"
+                 required>
+        </mat-form-field>
+        <div class="footerButtons">                        
+          <button mat-stroked-button color="warn" matStepperPrevious><mat-icon>keyboard_arrow_left</mat-icon> Back</button>
+          <div>
+            <button mat-stroked-button color="warn" style="margin-right: 20px;">Cancel</button>
+            <button mat-flat-button color="warn" (click)="addNstInfo()">{{actionBtn}}</button>
+          </div>
+          <button mat-stroked-button color="secondary" matStepperNext disabled="true">Next <mat-icon>keyboard_arrow_right</mat-icon></button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>
+
+

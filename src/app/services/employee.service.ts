@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeService {
-
+  managers: any[] = [];
   constructor(private http: HttpClient) { }
 
   postEmployee(data: any){
@@ -23,6 +23,11 @@ export class EmployeeService {
 
   deleteEmployee(id:number){
     return this.http.delete<any>("http://localhost:3000/employeesList/"+id);
+  }
+
+  getManagers() {
+    this.managers = ['John Doe','Larry Bird','Steve Jobs']
+    return this.managers;
   }
 
 }

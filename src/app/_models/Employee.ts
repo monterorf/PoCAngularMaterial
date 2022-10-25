@@ -2,9 +2,13 @@ export interface Employee {
     id: number;
     firstName: string;
     lastName: string;
-    dateOfBirth: Date;
-    gender: string;
-    address: string;
-    zipCode: number;
+    employeSince: Date;
+    area: string;
+    location: string;
+    manager: number;
     university: string;
+    email:string;
+    address:string;
+    zipCode:string;
+
 }

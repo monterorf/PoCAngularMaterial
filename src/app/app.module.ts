@@ -22,12 +22,20 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NstInfoFormComponent } from './nst-info-form/nst-info-form.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { PhotoProfileComponent } from './photo-profile/photo-profile.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent
+    UserFormComponent,
+    NstInfoFormComponent,
+    PhotoProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,9 @@ import {MatSortModule} from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
