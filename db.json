@@ -1,5 +1,20 @@
 {
-  "employeesList": [],
+  "employeesList": [
+    {
+      "controlId": 123123,
+      "firstName": "Ernesto",
+      "lastName": "Gonzalez",
+      "position": "Developer",
+      "employeeSince": "2022-10-11T05:00:00.000Z",
+      "area": "Sistemas",
+      "location": "Remote",
+      "manager": "Steve Jobs",
+      "address": "jesus maria",
+      "zipCode": 20908,
+      "university": "UAA",
+      "id": 1
+    }
+  ],
   "comments": [
     {
       "id": 1,

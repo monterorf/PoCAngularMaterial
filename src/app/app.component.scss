@@ -19,3 +19,33 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+  .form-inputs{
+    position:relative;
+}
+.form-inputs .form-control{
+    height:45px; 
+}
+
+.form-inputs .form-control:focus{
+    box-shadow:none;
+    border:1px solid #ffaf3e;;
+}
+
+.form-inputs i{
+    position:absolute;
+    right:10px;
+    top:10px;
+}
+.form-select{
+  height:45px; 
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+.form-select:focus{
+  box-shadow:none;
+    border:1px solid #ffaf3e;
+}
+.form-select option:hover{
+  box-shadow: 0 0 10px 100px   #ffaf3e inset;
+} 
