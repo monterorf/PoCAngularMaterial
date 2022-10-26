@@ -1,6 +1,6 @@
 .nstInfo{
     display: flex;
-    height: 280px;
+    height: auto;
     margin: 20px;    
 }
 
@@ -39,4 +39,5 @@ flex-basis: 20%;
 .footerButtons{
     display: flex;
     justify-content: space-between;
+    margin-top: 20px !important;
 }
