@@ -46,12 +46,14 @@ $angular-focalpoint-theme: mat.define-light-theme((
 }
 
 .mat-dialog-step, .mat-dialog-content{
-  height: 500px;
+  height: 600px;
  
 }
-.mat-form-field{
+.dropdown-hr{
   background-color: white;
   height: 40px;
+    font-size: 14px;
+    width: 100%;
 }
 .billable-chip{
   background-color: green !important;
@@ -65,9 +67,7 @@ $angular-focalpoint-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($angular-focalpoint-theme);
 
-mat-form-field.mat-form-field {
-  font-size: 16px;
-}
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -23,7 +23,7 @@
        <div class="col-4">
       </div>
         <div style="margin-left: 10px;" class="col-2"> 
-         <mat-form-field  appearance="outline" >
+         <mat-form-field  class="dropdown-hr" appearance="outline" >
             
             <mat-select >
               <mat-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</mat-option>
@@ -60,9 +60,8 @@
             
             <td mat-cell *matCellDef="let row">
               <p><b>{{row.firstName}} {{row.lastName}}</b> </p>
-              <p>Birth: {{row.dateOfBirth | date }}</p>
-              <p>Gender: {{row.gender}}</p>
-              <p>Address: {{row.address}}</p>
+              <p>{{row.position }}/ {{row.area}} / {{row.manager }} </p>
+              <p> {{row.email}}</p>
             </td>
             
            
@@ -72,7 +71,9 @@
           <!-- Status Column -->
           <ng-container matColumnDef="university">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let row"> <mat-chip-list aria-label="Fish selection">
+            <td mat-cell *matCellDef="let row"> 
+              <p><b>Control ID: {{row.id }}</b></p>
+              <mat-chip-list aria-label="Fish selection">
               <mat-chip class="billable-chip">Billable</mat-chip>
               <mat-chip>Reports</mat-chip>
               <mat-chip color="primary" selected>Bench</mat-chip>
