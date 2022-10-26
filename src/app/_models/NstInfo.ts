@@ -7,4 +7,11 @@ export interface NstInfo {
     area: string;
     location: string;
     manager: string;
+    email: string;
+    address:string;
+    zipCode:string;
+    enable:boolean;
+    billable:boolean;
+    reports:boolean;
+    bench:boolean;
 }
