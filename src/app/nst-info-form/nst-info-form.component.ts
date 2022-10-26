@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { enableDebugTools } from '@angular/platform-browser';
 import { EmployeeService } from '../services/employee.service';
 import { NstInfo } from '../_models/NstInfo';
 
@@ -35,6 +36,10 @@ export class NstInfoFormComponent implements OnInit {
       this.nstInfoForm.controls['address'].setValue(this.editData.address);  
       this.nstInfoForm.controls['zipCode'].setValue(this.editData.zipCode);  
       this.nstInfoForm.controls['university'].setValue(this.editData.university);  
+      this.nstInfoForm.controls['enabled'].setValue(this.editData.enabled);  
+      this.nstInfoForm.controls['bench'].setValue(this.editData.bench);  
+      this.nstInfoForm.controls['billable'].setValue(this.editData.billable);  
+      this.nstInfoForm.controls['reports'].setValue(this.editData.reports);  
 
       this.actionBtn = "Update"
       console.log(this.editData)
@@ -58,7 +63,11 @@ export class NstInfoFormComponent implements OnInit {
       manager: ['', Validators.required],
       address: ['',Validators.required],
       zipCode: ['',Validators.required],
-      university: ['',Validators.required]
+      university: ['',Validators.required],
+      enabled: [false],
+      billable: [false],
+      reports: [false],
+      bench: [false],
     });
     
   }
@@ -67,6 +76,7 @@ export class NstInfoFormComponent implements OnInit {
   addNstInfo(){
     if(!this.editData){
           this.nstInfo = this.nstInfoForm.value;
+          this.nstInfo.email = this.generateEmail();
           this.employeeService.postEmployee(this.nstInfo).subscribe({
           next:(res)=>{
             this.snackbar.open('Employee has been saved successfully','dismiss');
@@ -81,6 +91,10 @@ export class NstInfoFormComponent implements OnInit {
     }else{
       this.updateEmployee();
     }
+  }
+
+  generateEmail(){
+    return 'email@nearshoretechnology.com'
   }
 
 

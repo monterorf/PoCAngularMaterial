@@ -57,13 +57,15 @@
                   </form>
             </div>
             <div class="toggle cont">
-                <mat-slide-toggle>Enable</mat-slide-toggle>
+              <form [formGroup]="nstInfoForm">
+                <mat-slide-toggle formControlName="enabled">Enabled</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle>Billable</mat-slide-toggle>
+                <mat-slide-toggle formControlName="billable">Billable</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle>Reports</mat-slide-toggle>
+                <mat-slide-toggle formControlName="reports">Reports</mat-slide-toggle>
                 <br>
-                <mat-slide-toggle>Bench</mat-slide-toggle>
+                <mat-slide-toggle formControlName="bench">Bench</mat-slide-toggle>
+              </form>
             </div>
         </div>
         <div class="footerButtons">                        
