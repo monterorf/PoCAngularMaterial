@@ -11,7 +11,7 @@
 <mat-tab-group >
   <mat-tab label="Administrator"> </mat-tab>
   <mat-tab label="Resource Management"> </mat-tab>
-  <mat-tab label="Human Resources">  
+  <mat-tab label="Human Resources" >  
     <mat-toolbar class="hr-tab">
       <div class="col-sm-1"></div>
       <div class="col-2">
@@ -37,12 +37,12 @@
     </div>    
     </mat-toolbar>
     
-    <div class="container">
-    <div style="margin-top: 10px;">
+    <div class="container border border-light"  style="margin-top: 10px;">
+   
      
       
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>    
+      
+        <table mat-table [dataSource]="dataSource" matSort >    
           <!-- First Name Column -->
           <ng-container matColumnDef="Photo">
             
@@ -105,8 +105,8 @@
       
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
       </div>
-    </div>
-  </div></mat-tab>
+   
+  </mat-tab>
   <mat-tab label="My Timesheets">  </mat-tab>
   <mat-tab label="My Tasks"> </mat-tab>
   <mat-tab label="Profile">  </mat-tab>
