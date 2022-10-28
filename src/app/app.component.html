@@ -23,14 +23,21 @@
        <div class="col-4">
       </div>
         <div style="margin-left: 10px;" class="col-2"> 
-         <mat-form-field  class="dropdown-hr" appearance="outline" >
+         <!--<mat-form-field  class="dropdown-hr" appearance="outline" >
             
             <mat-select >
               <mat-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</mat-option>
              
             </mat-select>
-          </mat-form-field>
+          </mat-form-field>-->
+          <mat-form-field class="dropdown-hr" appearance="outline">
           
+            <mat-select  [(ngModel)]="selectedOptions" 
+            (ngModelChange)="selectedOptions" name="selectedOptions" 
+            placeholder="Options" multiple  >
+              <mat-option *ngFor="let option of optionList" [value]="option.value">{{option.viewValue}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="col-3"> 
       <button style="margin-left: 20px;" mat-raised-button color="warn" (click)="openDialog()">Add Employee</button>
