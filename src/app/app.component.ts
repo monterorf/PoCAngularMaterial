@@ -6,16 +6,14 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { NstInfoFormComponent } from './nst-info-form/nst-info-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {FormControl} from '@angular/forms';
 
-interface Option {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  
 })
 
 
@@ -24,27 +22,30 @@ export class AppComponent implements OnInit {
   title = 'PoCMatDialogForm';
   displayedColumns: string[] = ['Photo','firstName','university','action'];
   dataSource!: MatTableDataSource<any>;
-  options: Option[] = [
-    {value: 'allitems-0', viewValue: 'All Items'},
-    {value: 'item-1', viewValue: 'item 1'},
-    {value: 'item-2', viewValue: 'item 2'},
+  optionList: any[] = [
+    {value: 'all', viewValue: 'All'},
+    {value: 'billable', viewValue: 'Billable'},
+    {value: 'bench', viewValue: 'Bench'},
+    {value: 'report', viewValue: 'Report'}
   ];
+  selectedOptions = [
+    'all', 'All'
+ ];
+ 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(public dialog: MatDialog, private employeeService: EmployeeService, private snackBar: MatSnackBar) {
-
+    
   }
   // ngAfterViewInit(): void {
   //   throw new Error('Method not implemented.');
   // }
+ 
   ngOnInit(): void {
     this.getEmployees();
   }
-
-
-  
-
+ 
   openDialog() {
     const dialogRef = this.dialog.open(NstInfoFormComponent,{width:'60%'})
     .afterClosed().subscribe(val=>{
