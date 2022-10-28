@@ -23,13 +23,6 @@
        <div class="col-4">
       </div>
         <div style="margin-left: 10px;" class="col-2"> 
-         <!--<mat-form-field  class="dropdown-hr" appearance="outline" >
-            
-            <mat-select >
-              <mat-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</mat-option>
-             
-            </mat-select>
-          </mat-form-field>-->
           <mat-form-field class="dropdown-hr" appearance="outline">
           
             <mat-select  [(ngModel)]="selectedOptions" 
@@ -81,9 +74,11 @@
             <td mat-cell *matCellDef="let row"> 
               <p><b>Control ID: {{row.id }}</b></p>
               <mat-chip-list aria-label="Fish selection">
-              <mat-chip class="billable-chip">Billable</mat-chip>
-              <mat-chip>Reports</mat-chip>
-              <mat-chip color="primary" selected>Bench</mat-chip>
+              <mat-chip *ngIf="row.billable" class="billable-chip">Billable</mat-chip>
+              <mat-chip *ngIf="row.reports">Reports</mat-chip>
+              <mat-chip *ngIf="row.enabled">Enabled</mat-chip>
+              <mat-chip color="primary" *ngIf="row.bench" selected>Bench</mat-chip>
+
               
             </mat-chip-list> </td>
           </ng-container>   

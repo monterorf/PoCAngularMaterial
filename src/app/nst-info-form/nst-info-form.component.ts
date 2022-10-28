@@ -94,12 +94,16 @@ export class NstInfoFormComponent implements OnInit {
   }
 
   generateEmail(){
-    return 'email@nearshoretechnology.com'
+    let email: String = this.nstInfoForm.controls['firstName'].value + this.nstInfoForm.controls['lastName'].value;
+    console.log("This is email ",email)
+    return email+'@nearshoretechnology.com'
   }
 
 
   updateEmployee(){
-    this.employeeService.updateEmployee(this.nstInfoForm.value,this.editData.id).subscribe({
+    this.nstInfo = this.nstInfoForm.value;
+    this.nstInfo.email = this.generateEmail();
+    this.employeeService.updateEmployee(this.nstInfo,this.editData.id).subscribe({
       next:(res)=>{
         this.snackbar.open('Employee has been updated successfully','dismiss');
         this.nstInfoForm.reset();
